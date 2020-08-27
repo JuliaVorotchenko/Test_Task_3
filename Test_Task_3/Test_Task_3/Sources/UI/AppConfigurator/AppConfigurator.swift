@@ -8,6 +8,10 @@
 
 import UIKit
 
+enum AppError: Error {
+    case jsonError
+}
+
 final class AppConfigurator {
     
     private var coordinator: Coordinator?
