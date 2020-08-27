@@ -22,6 +22,9 @@
 		CDEAE27C24F809B900B29E31 /* CityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDEAE27A24F809B900B29E31 /* CityTableViewCell.xib */; };
 		CDEAE27E24F80CBB00B29E31 /* AppConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEAE27D24F80CBB00B29E31 /* AppConfigurator.swift */; };
 		CDEAE28024F80CCD00B29E31 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEAE27F24F80CCD00B29E31 /* AppCoordinator.swift */; };
+		CDEAE28424F837C900B29E31 /* JSONParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEAE28324F837C900B29E31 /* JSONParser.swift */; };
+		CDEAE28624F8380800B29E31 /* CityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEAE28524F8380800B29E31 /* CityModel.swift */; };
+		CDEAE28824F839EE00B29E31 /* cityList.json in Resources */ = {isa = PBXBuildFile; fileRef = CDEAE28724F839EE00B29E31 /* cityList.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +46,9 @@
 		CDEAE27A24F809B900B29E31 /* CityTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CityTableViewCell.xib; sourceTree = "<group>"; };
 		CDEAE27D24F80CBB00B29E31 /* AppConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfigurator.swift; sourceTree = "<group>"; };
 		CDEAE27F24F80CCD00B29E31 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		CDEAE28324F837C900B29E31 /* JSONParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONParser.swift; sourceTree = "<group>"; };
+		CDEAE28524F8380800B29E31 /* CityModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityModel.swift; sourceTree = "<group>"; };
+		CDEAE28724F839EE00B29E31 /* cityList.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cityList.json; sourceTree = "<group>"; };
 		E1740B217FFFD7A090B85E0E /* Pods-Test_Task_3.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Test_Task_3.release.xcconfig"; path = "Target Support Files/Pods-Test_Task_3/Pods-Test_Task_3.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -111,6 +117,8 @@
 		CDEAE26724F7ECFD00B29E31 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				CDEAE28724F839EE00B29E31 /* cityList.json */,
+				CDEAE28524F8380800B29E31 /* CityModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -118,6 +126,7 @@
 		CDEAE26824F7ED0500B29E31 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				CDEAE28224F837B000B29E31 /* JSONParser */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -185,6 +194,14 @@
 			children = (
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		CDEAE28224F837B000B29E31 /* JSONParser */ = {
+			isa = PBXGroup;
+			children = (
+				CDEAE28324F837C900B29E31 /* JSONParser.swift */,
+			);
+			path = JSONParser;
 			sourceTree = "<group>";
 		};
 		D4A3116E5E2A74C510AA042C /* Frameworks */ = {
@@ -257,6 +274,7 @@
 			files = (
 				CDEAE27C24F809B900B29E31 /* CityTableViewCell.xib in Resources */,
 				CDEAE25F24F7E2B700B29E31 /* LaunchScreen.storyboard in Resources */,
+				CDEAE28824F839EE00B29E31 /* cityList.json in Resources */,
 				CDEAE27824F8097600B29E31 /* CitiesListViewController.xib in Resources */,
 				CDEAE27224F7FAA300B29E31 /* CityDetailsViewController.xib in Resources */,
 				CDEAE25C24F7E2B700B29E31 /* Assets.xcassets in Resources */,
@@ -315,8 +333,10 @@
 				CDEAE25724F7E2B600B29E31 /* CityDetailsViewController.swift in Sources */,
 				CDEAE27B24F809B900B29E31 /* CityTableViewCell.swift in Sources */,
 				CDEAE27624F8095C00B29E31 /* CitiesListView.swift in Sources */,
+				CDEAE28624F8380800B29E31 /* CityModel.swift in Sources */,
 				CDEAE25324F7E2B600B29E31 /* AppDelegate.swift in Sources */,
 				CDEAE27E24F80CBB00B29E31 /* AppConfigurator.swift in Sources */,
+				CDEAE28424F837C900B29E31 /* JSONParser.swift in Sources */,
 				CDEAE27024F7F9F700B29E31 /* CityDetailsView.swift in Sources */,
 				CDEAE28024F80CCD00B29E31 /* AppCoordinator.swift in Sources */,
 				CDEAE25524F7E2B600B29E31 /* SceneDelegate.swift in Sources */,

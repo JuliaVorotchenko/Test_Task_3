@@ -19,10 +19,13 @@ final class CitiesListViewController: UIViewController, UITableViewDataSource, U
     // MARK: - Private Properties
     
     let eventHandler: ((CitiesListEvents) -> ())?
+    private let jsonParser: JSONParser
+    private var cityModels: [CityModel] = []
     
     // MARK: - Initialization
     
-    init(eventHandler: ((CitiesListEvents) -> ())?) {
+    init(eventHandler: ((CitiesListEvents) -> ())?, jsonParser: JSONParser = JSONParserImpl()) {
+        self.jsonParser = jsonParser
         self.eventHandler = eventHandler
         super.init(nibName: String(describing: type(of: self)), bundle: nil)
     }
@@ -40,6 +43,7 @@ final class CitiesListViewController: UIViewController, UITableViewDataSource, U
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setTableView()
+        self.getCities()
     }
     
     // MARK: - Private Methods
@@ -50,14 +54,26 @@ final class CitiesListViewController: UIViewController, UITableViewDataSource, U
         self.rootView.tableView.register(UINib(nibName: "CityTableViewCell", bundle: nil), forCellReuseIdentifier: "CityTableViewCell")
     }
     
+    private func getCities() {
+        let data = self.jsonParser.parseJSON(file: "cityList")
+        switch data {
+        case .success(let models):
+            self.cityModels = models
+        case .failure(let error):
+            print(error)
+        }
+    }
+    
     // MARK: - UITableViewDelegate Methods
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return self.cityModels.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "CityTableViewCell", for: indexPath) as? CityTableViewCell else { return UITableViewCell() }
+       
+        cell.fill(with: self.cityModels[indexPath.row])
         return cell
     }
     
