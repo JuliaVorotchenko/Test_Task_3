@@ -9,6 +9,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CitiesListViewController" customModule="Test_Task_3" customModuleProvider="target">
             <connections>
+                <outlet property="rootView" destination="iN0-l3-epB" id="Iix-bw-shP"/>
                 <outlet property="view" destination="iN0-l3-epB" id="mBT-Yz-vGW"/>
             </connections>
         </placeholder>

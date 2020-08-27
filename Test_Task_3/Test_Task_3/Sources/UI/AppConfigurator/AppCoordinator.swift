@@ -15,7 +15,7 @@ protocol Coordinator {
 
 final class AppCoordinator: Coordinator {
     // MARK: - Properties
-
+    
     let navigationController: UINavigationController
     var citiesListViewController: CitiesListViewController?
     var cityDetailsViewController: CityDetailsViewController?
@@ -35,14 +35,27 @@ final class AppCoordinator: Coordinator {
     // MARK: - Private Methods
     
     private func createCitiesListViewController() {
-        let controller = CitiesListViewController()
+        let controller = CitiesListViewController(eventHandler: self.citiesListEvent)
         self.navigationController.viewControllers = [controller]
     }
     
-    private func createCityDetailsViewController() {
-        let controller = CityDetailsViewController()
-         self.navigationController.viewControllers = [controller]
+    private func citiesListEvent(_ event: CitiesListEvents) {
+        switch event {
+        case .cityDetails:
+            self.createCityDetailsViewController()
+            self.citiesListViewController = nil
+        }
     }
     
+    private func createCityDetailsViewController() {
+        let controller = CityDetailsViewController(eventHandler: self.cityDetailsEvent)
+        self.navigationController.pushViewController(controller, animated: true)
+    }
     
+    private func cityDetailsEvent(_ event: CityDetailsEvents) {
+        switch event {
+        case .back:
+            self.navigationController.popViewController(animated: true)
+        }
+    }
 }

@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class CityDetailsView: UIView {
+final class CityDetailsView: UIView {
 
     @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet weak var mapView: MKMapView!

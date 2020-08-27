@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CityTableViewCell: UITableViewCell {
+final class CityTableViewCell: UITableViewCell {
 
     @IBOutlet weak var cityImage: UIImageView!
     @IBOutlet weak var cityNameLabel: UILabel!
