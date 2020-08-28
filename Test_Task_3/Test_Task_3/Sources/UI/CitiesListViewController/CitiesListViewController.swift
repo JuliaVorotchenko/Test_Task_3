@@ -12,10 +12,10 @@ enum CitiesListEvents {
     case cityDetails
 }
 
-final class CitiesListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-   
+final class CitiesListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
+    
     @IBOutlet var rootView: CitiesListView!
-
+    
     // MARK: - Private Properties
     
     let eventHandler: ((CitiesListEvents) -> ())?
@@ -49,6 +49,7 @@ final class CitiesListViewController: UIViewController, UITableViewDataSource, U
     // MARK: - Private Methods
     
     private func setTableView() {
+        self.rootView.citySearchBar.delegate = self
         self.rootView?.tableView.delegate = self
         self.rootView?.tableView.dataSource = self
         self.rootView.tableView.register(UINib(nibName: "CityTableViewCell", bundle: nil), forCellReuseIdentifier: "CityTableViewCell")
@@ -72,12 +73,27 @@ final class CitiesListViewController: UIViewController, UITableViewDataSource, U
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "CityTableViewCell", for: indexPath) as? CityTableViewCell else { return UITableViewCell() }
-       
-        cell.fill(with: self.cityModels[indexPath.row])
+        
+        cell.fill(with: self.cityModels[indexPath.row], index: indexPath.item)
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.eventHandler?(.cityDetails)
+    }
+    
+    // MARK: - UISearchBarDelegate Mehtods
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        guard let searchQuery = self.rootView.citySearchBar.text else { return }
+        let filteredArr = self.cityModels.filter { $0.name.lowercased().contains(searchQuery.lowercased()) }
+        
+        if !searchQuery.isEmpty {
+            self.cityModels = filteredArr
+        } else {
+            self.getCities()
+        }
+    
+        self.rootView.tableView.reloadData()
     }
 }

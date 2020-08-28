@@ -12,7 +12,7 @@ final class CityTableViewCell: UITableViewCell {
  
     // MARK: - IBOutlets
 
-    @IBOutlet weak var cityImage: UIImageView!
+    @IBOutlet weak var cityImage: LoadingImageView!
     @IBOutlet weak var cityNameLabel: UILabel!
    
     // MARK: - Initialization
@@ -29,8 +29,14 @@ final class CityTableViewCell: UITableViewCell {
     
     // MARK: - Public Methods
     
-    func fill(with model: CityModel) {
+    func fill(with model: CityModel, index: Int) {
         self.cityNameLabel.text = model.name
+        if index % 2 == 0 {
+           self.cityImage.loadImage(mainPath: Path.evenUrl)
+        } else {
+            self.cityImage.loadImage(mainPath: Path.oddUrl)
+        }
+        
     }
     
 }
