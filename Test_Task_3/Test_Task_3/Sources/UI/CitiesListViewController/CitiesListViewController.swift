@@ -9,7 +9,7 @@
 import UIKit
 
 enum CitiesListEvents {
-    case cityDetails
+    case cityDetails(CityModel)
 }
 
 final class CitiesListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
@@ -79,7 +79,7 @@ final class CitiesListViewController: UIViewController, UITableViewDataSource, U
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.eventHandler?(.cityDetails)
+        self.eventHandler?(.cityDetails(self.cityModels[indexPath.row]))
     }
     
     // MARK: - UISearchBarDelegate Mehtods

@@ -29,6 +29,7 @@
 		CDEAE29124F8FBF600B29E31 /* LoadingImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEAE29024F8FBF600B29E31 /* LoadingImageView.swift */; };
 		CDEAE29324F8FC1B00B29E31 /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEAE29224F8FC1B00B29E31 /* ActivityView.swift */; };
 		CDEAE29524F9094500B29E31 /* cityList.json in Resources */ = {isa = PBXBuildFile; fileRef = CDEAE29424F9094500B29E31 /* cityList.json */; };
+		CDEAE29724F90D6600B29E31 /* APIInteractions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEAE29624F90D6600B29E31 /* APIInteractions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +58,7 @@
 		CDEAE29024F8FBF600B29E31 /* LoadingImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingImageView.swift; sourceTree = "<group>"; };
 		CDEAE29224F8FC1B00B29E31 /* ActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
 		CDEAE29424F9094500B29E31 /* cityList.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cityList.json; sourceTree = "<group>"; };
+		CDEAE29624F90D6600B29E31 /* APIInteractions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIInteractions.swift; sourceTree = "<group>"; };
 		E1740B217FFFD7A090B85E0E /* Pods-Test_Task_3.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Test_Task_3.release.xcconfig"; path = "Target Support Files/Pods-Test_Task_3/Pods-Test_Task_3.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -220,6 +222,7 @@
 			isa = PBXGroup;
 			children = (
 				CDEAE28B24F8F7AC00B29E31 /* NetworkService.swift */,
+				CDEAE29624F90D6600B29E31 /* APIInteractions.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -371,6 +374,7 @@
 				CDEAE28F24F8FB2B00B29E31 /* ImageLoadingService.swift in Sources */,
 				CDEAE28024F80CCD00B29E31 /* AppCoordinator.swift in Sources */,
 				CDEAE25524F7E2B600B29E31 /* SceneDelegate.swift in Sources */,
+				CDEAE29724F90D6600B29E31 /* APIInteractions.swift in Sources */,
 				CDEAE28C24F8F7AC00B29E31 /* NetworkService.swift in Sources */,
 				CDEAE27424F8093800B29E31 /* CitiesListViewController.swift in Sources */,
 			);

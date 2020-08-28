@@ -41,14 +41,14 @@ final class AppCoordinator: Coordinator {
     
     private func citiesListEvent(_ event: CitiesListEvents) {
         switch event {
-        case .cityDetails:
-            self.createCityDetailsViewController()
+        case .cityDetails(let model):
+            self.createCityDetailsViewController(model: model)
             self.citiesListViewController = nil
         }
     }
     
-    private func createCityDetailsViewController() {
-        let controller = CityDetailsViewController(eventHandler: self.cityDetailsEvent)
+    private func createCityDetailsViewController(model: CityModel) {
+        let controller = CityDetailsViewController(model: model, eventHandler: self.cityDetailsEvent)
         self.navigationController.pushViewController(controller, animated: true)
     }
     

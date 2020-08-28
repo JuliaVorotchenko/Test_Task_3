@@ -19,11 +19,14 @@ final class CityDetailsViewController: UIViewController {
     // MARK: - Private Properties
     
     let eventHandler: ((CityDetailsEvents) -> ())?
+    let model: CityModel
+    
     
     // MARK: - Initialization
     
-    init(eventHandler: ((CityDetailsEvents) -> ())?) {
+    init(model: CityModel, eventHandler: ((CityDetailsEvents) -> ())?) {
         self.eventHandler = eventHandler
+        self.model = model
         super.init(nibName: String(describing: type(of: self)), bundle: nil)
     }
     
