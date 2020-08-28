@@ -13,9 +13,9 @@ enum CitiesListEvents {
 }
 
 final class CitiesListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
-   
+    
     @IBOutlet var rootView: CitiesListView!
-
+    
     // MARK: - Private Properties
     
     let eventHandler: ((CitiesListEvents) -> ())?
@@ -49,6 +49,7 @@ final class CitiesListViewController: UIViewController, UITableViewDataSource, U
     // MARK: - Private Methods
     
     private func setTableView() {
+        self.rootView.citySearchBar.delegate = self
         self.rootView?.tableView.delegate = self
         self.rootView?.tableView.dataSource = self
         self.rootView.tableView.register(UINib(nibName: "CityTableViewCell", bundle: nil), forCellReuseIdentifier: "CityTableViewCell")
@@ -83,10 +84,16 @@ final class CitiesListViewController: UIViewController, UITableViewDataSource, U
     
     // MARK: - UISearchBarDelegate Mehtods
     
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        self.rootView.citySearchBar.resignFirstResponder()
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         guard let searchQuery = self.rootView.citySearchBar.text else { return }
+        let filteredArr = self.cityModels.filter { $0.name.lowercased().contains(searchQuery.lowercased()) }
         
+        if !searchQuery.isEmpty {
+            self.cityModels = filteredArr
+        } else {
+            self.getCities()
+        }
+    
+        self.rootView.tableView.reloadData()
     }
-
 }
