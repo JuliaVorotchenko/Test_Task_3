@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct CityModel: Decodable, Hashable {
+struct CityModel: Decodable {
     let id: Int
     let name: String
     let state: String
@@ -25,7 +25,7 @@ struct CityModel: Decodable, Hashable {
     
 }
 
-struct Coordinates: Decodable, Hashable {
+struct Coordinates: Decodable {
     let longitude: Double
     let latitude: Double
     
