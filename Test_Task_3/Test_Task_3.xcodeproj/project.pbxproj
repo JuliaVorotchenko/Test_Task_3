@@ -25,6 +25,10 @@
 		CDEAE28424F837C900B29E31 /* JSONParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEAE28324F837C900B29E31 /* JSONParser.swift */; };
 		CDEAE28624F8380800B29E31 /* CityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEAE28524F8380800B29E31 /* CityModel.swift */; };
 		CDEAE28824F839EE00B29E31 /* cityList.json in Resources */ = {isa = PBXBuildFile; fileRef = CDEAE28724F839EE00B29E31 /* cityList.json */; };
+		CDEAE28C24F8F7AC00B29E31 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEAE28B24F8F7AC00B29E31 /* NetworkService.swift */; };
+		CDEAE28F24F8FB2B00B29E31 /* ImageLoadingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEAE28E24F8FB2B00B29E31 /* ImageLoadingService.swift */; };
+		CDEAE29124F8FBF600B29E31 /* LoadingImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEAE29024F8FBF600B29E31 /* LoadingImageView.swift */; };
+		CDEAE29324F8FC1B00B29E31 /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEAE29224F8FC1B00B29E31 /* ActivityView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +53,10 @@
 		CDEAE28324F837C900B29E31 /* JSONParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONParser.swift; sourceTree = "<group>"; };
 		CDEAE28524F8380800B29E31 /* CityModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityModel.swift; sourceTree = "<group>"; };
 		CDEAE28724F839EE00B29E31 /* cityList.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cityList.json; sourceTree = "<group>"; };
+		CDEAE28B24F8F7AC00B29E31 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		CDEAE28E24F8FB2B00B29E31 /* ImageLoadingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoadingService.swift; sourceTree = "<group>"; };
+		CDEAE29024F8FBF600B29E31 /* LoadingImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingImageView.swift; sourceTree = "<group>"; };
+		CDEAE29224F8FC1B00B29E31 /* ActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
 		E1740B217FFFD7A090B85E0E /* Pods-Test_Task_3.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Test_Task_3.release.xcconfig"; path = "Target Support Files/Pods-Test_Task_3/Pods-Test_Task_3.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -126,6 +134,8 @@
 		CDEAE26824F7ED0500B29E31 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				CDEAE28D24F8FB1300B29E31 /* ImageLoadingService */,
+				CDEAE28924F8F78400B29E31 /* Networking */,
 				CDEAE28224F837B000B29E31 /* JSONParser */,
 			);
 			path = Services;
@@ -141,6 +151,8 @@
 		CDEAE26A24F7ED1800B29E31 /* AppKit */ = {
 			isa = PBXGroup;
 			children = (
+				CDEAE29024F8FBF600B29E31 /* LoadingImageView.swift */,
+				CDEAE29224F8FC1B00B29E31 /* ActivityView.swift */,
 			);
 			path = AppKit;
 			sourceTree = "<group>";
@@ -202,6 +214,22 @@
 				CDEAE28324F837C900B29E31 /* JSONParser.swift */,
 			);
 			path = JSONParser;
+			sourceTree = "<group>";
+		};
+		CDEAE28924F8F78400B29E31 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				CDEAE28B24F8F7AC00B29E31 /* NetworkService.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		CDEAE28D24F8FB1300B29E31 /* ImageLoadingService */ = {
+			isa = PBXGroup;
+			children = (
+				CDEAE28E24F8FB2B00B29E31 /* ImageLoadingService.swift */,
+			);
+			path = ImageLoadingService;
 			sourceTree = "<group>";
 		};
 		D4A3116E5E2A74C510AA042C /* Frameworks */ = {
@@ -335,11 +363,15 @@
 				CDEAE27624F8095C00B29E31 /* CitiesListView.swift in Sources */,
 				CDEAE28624F8380800B29E31 /* CityModel.swift in Sources */,
 				CDEAE25324F7E2B600B29E31 /* AppDelegate.swift in Sources */,
+				CDEAE29124F8FBF600B29E31 /* LoadingImageView.swift in Sources */,
 				CDEAE27E24F80CBB00B29E31 /* AppConfigurator.swift in Sources */,
 				CDEAE28424F837C900B29E31 /* JSONParser.swift in Sources */,
+				CDEAE29324F8FC1B00B29E31 /* ActivityView.swift in Sources */,
 				CDEAE27024F7F9F700B29E31 /* CityDetailsView.swift in Sources */,
+				CDEAE28F24F8FB2B00B29E31 /* ImageLoadingService.swift in Sources */,
 				CDEAE28024F80CCD00B29E31 /* AppCoordinator.swift in Sources */,
 				CDEAE25524F7E2B600B29E31 /* SceneDelegate.swift in Sources */,
+				CDEAE28C24F8F7AC00B29E31 /* NetworkService.swift in Sources */,
 				CDEAE27424F8093800B29E31 /* CitiesListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

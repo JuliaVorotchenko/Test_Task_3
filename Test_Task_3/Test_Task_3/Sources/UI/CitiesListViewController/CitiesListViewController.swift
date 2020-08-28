@@ -12,7 +12,7 @@ enum CitiesListEvents {
     case cityDetails
 }
 
-final class CitiesListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+final class CitiesListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
    
     @IBOutlet var rootView: CitiesListView!
 
@@ -72,12 +72,21 @@ final class CitiesListViewController: UIViewController, UITableViewDataSource, U
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "CityTableViewCell", for: indexPath) as? CityTableViewCell else { return UITableViewCell() }
-       
-        cell.fill(with: self.cityModels[indexPath.row])
+        
+        cell.fill(with: self.cityModels[indexPath.row], index: indexPath.item)
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.eventHandler?(.cityDetails)
     }
+    
+    // MARK: - UISearchBarDelegate Mehtods
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        self.rootView.citySearchBar.resignFirstResponder()
+        guard let searchQuery = self.rootView.citySearchBar.text else { return }
+        
+    }
+
 }
