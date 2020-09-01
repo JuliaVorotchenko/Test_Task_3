@@ -9,7 +9,8 @@
 import UIKit
 
 enum AppError: Error {
-    case jsonError(Error)
+    case jsonError
+    case unowned(Error)
 }
 
 final class AppConfigurator {
@@ -23,8 +24,9 @@ final class AppConfigurator {
     private func configure(window: UIWindow) {
         let navigationController = UINavigationController()
         window.rootViewController = navigationController
+        let appErrorService = AppErrorServiceeImpl(rootViewController: window.rootViewController)
         navigationController.navigationBar.isHidden = true
-        self.coordinator = AppCoordinator(navigationController: navigationController)
+        self.coordinator = AppCoordinator(navigationController: navigationController, appErrorService: appErrorService)
         self.coordinator?.start()
         window.makeKeyAndVisible()
     }

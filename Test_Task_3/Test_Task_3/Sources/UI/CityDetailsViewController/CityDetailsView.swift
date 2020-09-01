@@ -20,7 +20,6 @@ final class CityDetailsView: UIView, MKMapViewDelegate {
     @IBOutlet weak var humidityLabel: UILabel!
     @IBOutlet weak var windLabel: UILabel!
     
-    
     // MARK: - Public methods
     
     func fill(with model: WeatherModel) {
@@ -28,8 +27,8 @@ final class CityDetailsView: UIView, MKMapViewDelegate {
         self.navigationBar.topItem?.title = "Weather in \(model.name)"
         self.cityNameLabel.text = model.name
         self.currentTemperatureLabel.text = self.setTemperature(kelvins: model.main.temperature) + "°C"
-        self.minTemperatureLabel.text = self.setTemperature(kelvins: model.main.minTemperature) + "C°"
-        self.maxTemperatureLabel.text = self.setTemperature(kelvins: model.main.maxTemperature) + "C°"
+        self.minTemperatureLabel.text = self.setTemperature(kelvins: model.main.minTemperature) + "°C"
+        self.maxTemperatureLabel.text = self.setTemperature(kelvins: model.main.maxTemperature) + "°C"
         self.humidityLabel.text = String(describing: model.main.humidity)  + "%"
         self.windLabel.text = String(describing: model.wind.speed) + "m/s"
     }

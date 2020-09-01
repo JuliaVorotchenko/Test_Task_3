@@ -10,6 +10,7 @@
 		4699B8651C930F8D4BF34CF8 /* Pods_Test_Task_3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86AE3FFD745AFAEB488A6F8B /* Pods_Test_Task_3.framework */; };
 		CD6C962124FEA3D8004634F5 /* UITableView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6C962024FEA3D8004634F5 /* UITableView + Extension.swift */; };
 		CD6C962324FEA478004634F5 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6C962224FEA478004634F5 /* Functions.swift */; };
+		CD6C962524FEB314004634F5 /* UIViewController + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6C962424FEB314004634F5 /* UIViewController + Extension.swift */; };
 		CDBE69D224F9689700203D51 /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBE69D124F9689700203D51 /* WeatherModel.swift */; };
 		CDBE69D424FA355900203D51 /* Double+Exteension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBE69D324FA355900203D51 /* Double+Exteension.swift */; };
 		CDEAE25324F7E2B600B29E31 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEAE25224F7E2B600B29E31 /* AppDelegate.swift */; };
@@ -41,6 +42,7 @@
 		86AE3FFD745AFAEB488A6F8B /* Pods_Test_Task_3.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Test_Task_3.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD6C962024FEA3D8004634F5 /* UITableView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView + Extension.swift"; sourceTree = "<group>"; };
 		CD6C962224FEA478004634F5 /* Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
+		CD6C962424FEB314004634F5 /* UIViewController + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Extension.swift"; sourceTree = "<group>"; };
 		CDBE69D124F9689700203D51 /* WeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherModel.swift; sourceTree = "<group>"; };
 		CDBE69D324FA355900203D51 /* Double+Exteension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Exteension.swift"; sourceTree = "<group>"; };
 		CDEAE24F24F7E2B600B29E31 /* Test_Task_3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Test_Task_3.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -158,6 +160,7 @@
 				CDBE69D324FA355900203D51 /* Double+Exteension.swift */,
 				CD6C962024FEA3D8004634F5 /* UITableView + Extension.swift */,
 				CD6C962224FEA478004634F5 /* Functions.swift */,
+				CD6C962424FEB314004634F5 /* UIViewController + Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -383,6 +386,7 @@
 				CDEAE29124F8FBF600B29E31 /* LoadingImageView.swift in Sources */,
 				CDEAE27E24F80CBB00B29E31 /* AppConfigurator.swift in Sources */,
 				CDEAE28424F837C900B29E31 /* JSONParser.swift in Sources */,
+				CD6C962524FEB314004634F5 /* UIViewController + Extension.swift in Sources */,
 				CDEAE29324F8FC1B00B29E31 /* ActivityView.swift in Sources */,
 				CDEAE27024F7F9F700B29E31 /* CityDetailsView.swift in Sources */,
 				CDEAE28F24F8FB2B00B29E31 /* ImageLoadingService.swift in Sources */,

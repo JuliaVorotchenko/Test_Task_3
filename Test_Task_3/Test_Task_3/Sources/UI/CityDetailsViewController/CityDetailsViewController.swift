@@ -11,6 +11,7 @@ import MapKit
 
 enum CityDetailsEvents {
     case back
+    case error(AppError)
 }
 
 final class CityDetailsViewController: UIViewController, MKMapViewDelegate {
@@ -20,18 +21,18 @@ final class CityDetailsViewController: UIViewController, MKMapViewDelegate {
     // MARK: - Private Properties
     
     let eventHandler: (CityDetailsEvents) -> ()
-    let model: CityModel
+    let coordinaes: Coordinates
     let networking: APIInteractionService
     var weatherModel: WeatherModel?
     
     
     // MARK: - Initialization
     
-    init(model: CityModel, eventHandler: @escaping (CityDetailsEvents) -> (), networking: APIInteractionService = ApiInteractionServiceImpl()) {
+    init(coordinates: Coordinates, eventHandler: @escaping (CityDetailsEvents) -> (), networking: APIInteractionService = ApiInteractionServiceImpl()) {
         self.eventHandler = eventHandler
-        self.model = model
+        self.coordinaes = coordinates
         self.networking = networking
-        super.init(nibName: String(describing: type(of: self)), bundle: nil)
+        super.init(nibName: F.nibNamefor(Self.self), bundle: nil)
     }
     
     required init?(coder: NSCoder) {
@@ -56,7 +57,7 @@ final class CityDetailsViewController: UIViewController, MKMapViewDelegate {
     // MARK: - Private Methods
     
     private func recieveWeatherModel() {
-        self.networking.loadWeather(coordinates: model.coordinates) { [weak self] result in
+        self.networking.loadWeather(coordinates: self.coordinaes) { [weak self] result in
             switch result {
             case .success(let model):
                 self?.rootView.fill(with: model)
@@ -66,7 +67,6 @@ final class CityDetailsViewController: UIViewController, MKMapViewDelegate {
             }
         }
     }
-    
     
     // MARK: - IBActions
     

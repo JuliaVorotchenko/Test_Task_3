@@ -17,11 +17,13 @@ final class AppCoordinator: Coordinator {
     // MARK: - Properties
     
     let navigationController: UINavigationController
+    private let appErrorService: AppErrorService
     
     // MARK: - Initialization
     
-    init(navigationController: UINavigationController) {
+    init(navigationController: UINavigationController, appErrorService: AppErrorService) {
         self.navigationController = navigationController
+        self.appErrorService = appErrorService
     }
     
     // MARK: - Public Methods
@@ -39,13 +41,15 @@ final class AppCoordinator: Coordinator {
     
     private func citiesListEvent(_ event: CitiesListEvents) {
         switch event {
-        case .cityDetails(let model):
-            self.createCityDetailsViewController(model: model)
-                    }
+        case .cityDetails(let coordinates):
+            self.createCityDetailsViewController(coordinates: coordinates)
+        case .error(let error):
+            self.appErrorService.handleError(error)
+        }
     }
     
-    private func createCityDetailsViewController(model: CityModel) {
-        let controller = CityDetailsViewController(model: model, eventHandler:{ [weak self] in self?.cityDetailsEvent($0) })
+    private func createCityDetailsViewController(coordinates: Coordinates) {
+        let controller = CityDetailsViewController(coordinates: coordinates, eventHandler: { [weak self] in self?.cityDetailsEvent($0) })
         self.navigationController.pushViewController(controller, animated: true)
     }
     
@@ -53,6 +57,29 @@ final class AppCoordinator: Coordinator {
         switch event {
         case .back:
             self.navigationController.popViewController(animated: true)
+        case .error(let error):
+            self.appErrorService.handleError(error)
         }
     }
 }
+
+
+protocol AppErrorService {
+    func handleError(_ error: AppError)
+}
+
+final class AppErrorServiceeImpl: AppErrorService {
+    
+    private let rootViewController: UIViewController?
+    
+    init(rootViewController: UIViewController?) {
+        self.rootViewController = rootViewController
+    }
+    
+    func handleError(_ error: AppError) {
+        self.rootViewController?.showErrorAlert("Error", error: error)
+    }
+    
+    
+}
+
