@@ -64,20 +64,3 @@ final class AppCoordinator: Coordinator {
 }
 
 
-protocol AppErrorService {
-    func handleError(_ error: AppError)
-}
-
-final class AppErrorServiceeImpl: AppErrorService {
-    
-    private let rootViewController: UIViewController?
-    
-    init(rootViewController: UIViewController?) {
-        self.rootViewController = rootViewController
-    }
-    
-    func handleError(_ error: AppError) {
-        self.rootViewController?.showErrorAlert("Error", error: error)
-    }
-}
-

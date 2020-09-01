@@ -22,7 +22,7 @@ final class CitiesListViewController: UIViewController, UITableViewDataSource, U
     let eventHandler: (CitiesListEvents) -> ()
     private let jsonParser: JSONParser
     private var cityModels: [CityViewModel] = []
-    private var cityModelsBase: [CityViewModel] = []
+    private var cityModelsNoFiltration: [CityViewModel] = []
     
     // MARK: - Initialization
     
@@ -68,7 +68,7 @@ final class CitiesListViewController: UIViewController, UITableViewDataSource, U
                     return CityViewModel(name: tuple.element.name, url: path, coordinates: tuple.element.coordinates)
             }
             self.cityModels = result
-            self.cityModelsBase = result
+            self.cityModelsNoFiltration = result
         case .failure(let error):
             self.eventHandler(.error(.unowned(error)))
         }
@@ -102,7 +102,7 @@ final class CitiesListViewController: UIViewController, UITableViewDataSource, U
         if !searchText.isEmpty {
             self.cityModels = filteredArr
         } else {
-            self.cityModels = self.cityModelsBase
+            self.cityModels = self.cityModelsNoFiltration
         }
         self.rootView.tableView.reloadData()
     }

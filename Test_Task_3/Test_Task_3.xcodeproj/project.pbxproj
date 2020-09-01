@@ -11,6 +11,7 @@
 		CD6C962124FEA3D8004634F5 /* UITableView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6C962024FEA3D8004634F5 /* UITableView + Extension.swift */; };
 		CD6C962324FEA478004634F5 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6C962224FEA478004634F5 /* Functions.swift */; };
 		CD6C962524FEB314004634F5 /* UIViewController + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6C962424FEB314004634F5 /* UIViewController + Extension.swift */; };
+		CD6C962824FED125004634F5 /* AppErrorService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6C962724FED125004634F5 /* AppErrorService.swift */; };
 		CDBE69D224F9689700203D51 /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBE69D124F9689700203D51 /* WeatherModel.swift */; };
 		CDBE69D424FA355900203D51 /* Double+Exteension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBE69D324FA355900203D51 /* Double+Exteension.swift */; };
 		CDEAE25324F7E2B600B29E31 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEAE25224F7E2B600B29E31 /* AppDelegate.swift */; };
@@ -43,6 +44,7 @@
 		CD6C962024FEA3D8004634F5 /* UITableView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView + Extension.swift"; sourceTree = "<group>"; };
 		CD6C962224FEA478004634F5 /* Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 		CD6C962424FEB314004634F5 /* UIViewController + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Extension.swift"; sourceTree = "<group>"; };
+		CD6C962724FED125004634F5 /* AppErrorService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppErrorService.swift; sourceTree = "<group>"; };
 		CDBE69D124F9689700203D51 /* WeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherModel.swift; sourceTree = "<group>"; };
 		CDBE69D324FA355900203D51 /* Double+Exteension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Exteension.swift"; sourceTree = "<group>"; };
 		CDEAE24F24F7E2B600B29E31 /* Test_Task_3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Test_Task_3.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -91,6 +93,14 @@
 				E1740B217FFFD7A090B85E0E /* Pods-Test_Task_3.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		CD6C962624FED10A004634F5 /* AppErrorService */ = {
+			isa = PBXGroup;
+			children = (
+				CD6C962724FED125004634F5 /* AppErrorService.swift */,
+			);
+			path = AppErrorService;
 			sourceTree = "<group>";
 		};
 		CDEAE24624F7E2B600B29E31 = {
@@ -147,6 +157,7 @@
 		CDEAE26824F7ED0500B29E31 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				CD6C962624FED10A004634F5 /* AppErrorService */,
 				CDEAE28D24F8FB1300B29E31 /* ImageLoadingService */,
 				CDEAE28924F8F78400B29E31 /* Networking */,
 				CDEAE28224F837B000B29E31 /* JSONParser */,
@@ -382,6 +393,7 @@
 				CD6C962324FEA478004634F5 /* Functions.swift in Sources */,
 				CDEAE27624F8095C00B29E31 /* CitiesListView.swift in Sources */,
 				CDEAE28624F8380800B29E31 /* CityModel.swift in Sources */,
+				CD6C962824FED125004634F5 /* AppErrorService.swift in Sources */,
 				CDEAE25324F7E2B600B29E31 /* AppDelegate.swift in Sources */,
 				CDEAE29124F8FBF600B29E31 /* LoadingImageView.swift in Sources */,
 				CDEAE27E24F80CBB00B29E31 /* AppConfigurator.swift in Sources */,

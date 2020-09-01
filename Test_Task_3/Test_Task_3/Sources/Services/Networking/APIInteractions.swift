@@ -14,7 +14,7 @@ struct Constants {
 }
 
 protocol APIInteractionService {
-    func loadWeather(coordinates: Coordinates, completion: ((Result<WeatherModel, WeatherError>) -> Void)?)
+    func loadWeather(coordinates: Coordinates, completion: @escaping (Result<WeatherModel, NetworkError>) -> Void)
 }
 
 class ApiInteractionServiceImpl: APIInteractionService {
@@ -35,40 +35,78 @@ class ApiInteractionServiceImpl: APIInteractionService {
     
     // MARK: - Public methods
     
-    func loadWeather(coordinates: Coordinates, completion: ((Result<WeatherModel, WeatherError>) -> Void)?) {
-        let url = URL(string: "https://api.openweathermap.org/data/2.5/weather?lat=\(coordinates.latitude)&lon=\(coordinates.longitude)&appid=\(Constants.apiKey)")
-        self.dataTask = self.networkService.perform(request: URLRequest(url: url!), completion: { [weak self] result in
+    func loadWeather(coordinates: Coordinates, completion: @escaping (Result<WeatherModel, NetworkError>) -> Void) {
+        let url = URL(string: "https://api.openweathermap.org/data/2.5/weather?lat=\(coordinates.latitude)&lon=\(coordinates.longitude)&appid=\(Constants.apiKey)")!
+        self.dataTask = self.networkService.perform(request: URLRequest(url: url), completion: { [weak self] result in
             guard let `self` = self else { return }
             self.queue.async {
                 switch result {
-                case .success(let data, _):
-                    guard let data = data else { return }
-                    switch self.decodeData(from: data) {
-                    case .success(let model):
-                        completion?(.success(model))
-                    case .failure(let error):
-                        completion?(.failure(error))
-                    }
+                case .success(let data, let response):
+                    self.handleNetworkResponse(data, response: response, completion: completion)
                 case .failure:
-                    completion?(.failure(.unableTorecieveWeatherData))
+                    completion(.failure(.resultError))
                 }
             }
         })
-        
     }
     
-    private func decodeData(from data: Data) -> Result<WeatherModel, WeatherError> {
-        let decoder = JSONDecoder()
+    private func decode<Value: Decodable>(_ data: Data?) -> Result<Value, NetworkError> {
         do {
-            let model = try decoder.decode(WeatherModel.self, from: data)
-            return .success(model)
+            guard let data = data else { return .failure(.encodingFailed) }
+            let value = try JSONDecoder().decode(Value.self, from: data)
+            return .success(value)
         } catch {
-            print("error:\(error)")
+            return .failure(.encodingFailed)
         }
-        return .failure(.unableTorecieveWeatherData)
+    }
+    
+    private func handleNetworkResponse(_ data: Data?,
+                                       response: HTTPURLResponse,
+                                       completion: @escaping (Result<WeatherModel, NetworkError>) -> Void) {
+        switch response.statusCode {
+        case 200...300:
+            completion(self.decode(data))
+        case 501...599:
+            completion(.failure(.badRequest))
+        default:
+            completion(.failure(.networkingResponse))
+        }
     }
 }
 
+
 enum WeatherError: Error {
     case unableTorecieveWeatherData
+}
+
+enum NetworkError: Error {
+    case parametersNil
+    case encodingFailed
+    case missingURL
+    case resultError
+    case badRequest
+    case outdated
+    case networkingResponse
+    
+    case other(URLError: Error?)
+    
+    var stringDescription: String {
+        switch self {
+        case .parametersNil:
+            return "Parameters were nil."
+        case .encodingFailed:
+            return "Parameters encoding failed."
+        case .missingURL:
+            return "URL is nil."
+        case .resultError:
+            return "Couldnt`t parse resultError"
+        case .networkingResponse:
+            return "Couldnt "
+        case .other(let error): return error?.localizedDescription ?? "other error"
+        case .badRequest:
+            return self.localizedDescription
+        case .outdated:
+            return self.localizedDescription
+        }
+    }
 }
