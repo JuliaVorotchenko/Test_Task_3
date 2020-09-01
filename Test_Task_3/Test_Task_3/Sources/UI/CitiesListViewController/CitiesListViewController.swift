@@ -9,7 +9,7 @@
 import UIKit
 
 enum CitiesListEvents {
-    case cityDetails
+    case cityDetails(CityModel)
 }
 
 final class CitiesListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
@@ -56,6 +56,7 @@ final class CitiesListViewController: UIViewController, UITableViewDataSource, U
     }
     
     private func getCities() {
+    
         let data = self.jsonParser.parseJSON(file: "cityList")
         switch data {
         case .success(let models):
@@ -79,21 +80,46 @@ final class CitiesListViewController: UIViewController, UITableViewDataSource, U
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.eventHandler?(.cityDetails)
+        self.eventHandler?(.cityDetails(self.cityModels[indexPath.row]))
     }
     
     // MARK: - UISearchBarDelegate Mehtods
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        guard let searchQuery = self.rootView.citySearchBar.text else { return }
+        guard let searchQuery = searchBar.text else { return }
         let filteredArr = self.cityModels.filter { $0.name.lowercased().contains(searchQuery.lowercased()) }
         
-        if !searchQuery.isEmpty {
+        if !searchText.isEmpty {
             self.cityModels = filteredArr
         } else {
             self.getCities()
         }
-    
         self.rootView.tableView.reloadData()
     }
+    
+//    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+//       guard let searchQuery = searchBar.text else { return }
+//        let filteredArr = self.cityModels.filter { $0.name.lowercased().contains(searchQuery.lowercased()) }
+//        
+//        if !searchQuery.isEmpty {
+//            self.cityModels = filteredArr
+//            self.rootView.tableView.reloadData()
+//        }
+//        
+//        searchBar.resignFirstResponder()
+//    }
+//    
+//   
+//    
+//    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+//        guard let searchQuery = searchBar.text else { return }
+//        let filteredArr = self.cityModels.filter { $0.name.lowercased().contains(searchQuery.lowercased()) }
+//
+//        if !searchQuery.isEmpty {
+//            self.cityModels = filteredArr
+//        }
+//    }
+//
+//    
+
 }
