@@ -17,8 +17,6 @@ final class AppCoordinator: Coordinator {
     // MARK: - Properties
     
     let navigationController: UINavigationController
-    var citiesListViewController: CitiesListViewController?
-    var cityDetailsViewController: CityDetailsViewController?
     
     // MARK: - Initialization
     
@@ -35,20 +33,19 @@ final class AppCoordinator: Coordinator {
     // MARK: - Private Methods
     
     private func createCitiesListViewController() {
-        let controller = CitiesListViewController(eventHandler: self.citiesListEvent)
-        self.navigationController.viewControllers = [controller]
+        let controller = CitiesListViewController(eventHandler: { [weak self] in self?.citiesListEvent($0) })
+        self.navigationController.setViewControllers([controller], animated: true)
     }
     
     private func citiesListEvent(_ event: CitiesListEvents) {
         switch event {
         case .cityDetails(let model):
             self.createCityDetailsViewController(model: model)
-            self.citiesListViewController = nil
-        }
+                    }
     }
     
     private func createCityDetailsViewController(model: CityModel) {
-        let controller = CityDetailsViewController(model: model, eventHandler: self.cityDetailsEvent)
+        let controller = CityDetailsViewController(model: model, eventHandler:{ [weak self] in self?.cityDetailsEvent($0) })
         self.navigationController.pushViewController(controller, animated: true)
     }
     

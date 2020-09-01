@@ -15,16 +15,10 @@ final class CityTableViewCell: UITableViewCell {
     @IBOutlet weak var cityImage: LoadingImageView!
     @IBOutlet weak var cityNameLabel: UILabel!
    
-    // MARK: - Initialization
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        self.cityNameLabel.text = ""
+        self.cityImage.cancelLoading()
     }
     
     // MARK: - Public Methods

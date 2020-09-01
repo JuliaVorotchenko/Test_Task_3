@@ -14,17 +14,17 @@ enum CitiesListEvents {
 
 final class CitiesListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
     
-    @IBOutlet var rootView: CitiesListView!
+    @IBOutlet weak var rootView: CitiesListView!
     
     // MARK: - Private Properties
     
-    let eventHandler: ((CitiesListEvents) -> ())?
+    let eventHandler: (CitiesListEvents) -> ()
     private let jsonParser: JSONParser
     private var cityModels: [CityModel] = []
     
     // MARK: - Initialization
     
-    init(eventHandler: ((CitiesListEvents) -> ())?, jsonParser: JSONParser = JSONParserImpl()) {
+    init(eventHandler: @escaping (CitiesListEvents) -> (), jsonParser: JSONParser = JSONParserImpl()) {
         self.jsonParser = jsonParser
         self.eventHandler = eventHandler
         super.init(nibName: String(describing: type(of: self)), bundle: nil)
@@ -52,7 +52,7 @@ final class CitiesListViewController: UIViewController, UITableViewDataSource, U
         self.rootView.citySearchBar.delegate = self
         self.rootView?.tableView.delegate = self
         self.rootView?.tableView.dataSource = self
-        self.rootView.tableView.register(UINib(nibName: "CityTableViewCell", bundle: nil), forCellReuseIdentifier: "CityTableViewCell")
+        self.rootView.tableView.register(CityTableViewCell.self)
     }
     
     private func getCities() {
@@ -66,21 +66,22 @@ final class CitiesListViewController: UIViewController, UITableViewDataSource, U
         }
     }
     
-    // MARK: - UITableViewDelegate Methods
+    // MARK: - UITableViewDataSource Methods
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.cityModels.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "CityTableViewCell", for: indexPath) as? CityTableViewCell else { return UITableViewCell() }
-        
+        let cell: CityTableViewCell = tableView.dequeueReusableCell(CityTableViewCell.self, for: indexPath)
         cell.fill(with: self.cityModels[indexPath.row], index: indexPath.item)
         return cell
     }
     
+    // MARK: - UITableViewDelegate Methods
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.eventHandler?(.cityDetails(self.cityModels[indexPath.row]))
+        self.eventHandler(.cityDetails(self.cityModels[indexPath.row]))
     }
     
     // MARK: - UISearchBarDelegate Mehtods

@@ -19,7 +19,7 @@ final class CityDetailsViewController: UIViewController, MKMapViewDelegate {
     
     // MARK: - Private Properties
     
-    let eventHandler: ((CityDetailsEvents) -> ())?
+    let eventHandler: (CityDetailsEvents) -> ()
     let model: CityModel
     let networking: APIInteractionService
     var weatherModel: WeatherModel?
@@ -27,7 +27,7 @@ final class CityDetailsViewController: UIViewController, MKMapViewDelegate {
     
     // MARK: - Initialization
     
-    init(model: CityModel, eventHandler: ((CityDetailsEvents) -> ())?, networking: APIInteractionService = ApiInteractionServiceImpl()) {
+    init(model: CityModel, eventHandler: @escaping (CityDetailsEvents) -> (), networking: APIInteractionService = ApiInteractionServiceImpl()) {
         self.eventHandler = eventHandler
         self.model = model
         self.networking = networking
@@ -71,7 +71,7 @@ final class CityDetailsViewController: UIViewController, MKMapViewDelegate {
     // MARK: - IBActions
     
     @IBAction func onBack(_ sender: UIBarButtonItem) {
-        self.eventHandler?(.back)
+        self.eventHandler(.back)
     }
     
 }

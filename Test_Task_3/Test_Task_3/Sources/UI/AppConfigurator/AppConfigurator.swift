@@ -9,7 +9,7 @@
 import UIKit
 
 enum AppError: Error {
-    case jsonError
+    case jsonError(Error)
 }
 
 final class AppConfigurator {
