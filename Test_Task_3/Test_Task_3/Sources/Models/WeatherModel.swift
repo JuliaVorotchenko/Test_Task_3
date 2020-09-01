@@ -12,7 +12,7 @@ struct WeatherModel: Decodable {
     let coordinates: Coordinates
     let weather: [Weather]
     let base: String
-    let main: Main?
+    let main: Main
     let wind: Wind
     let clouds: Clouds
     let date: Int

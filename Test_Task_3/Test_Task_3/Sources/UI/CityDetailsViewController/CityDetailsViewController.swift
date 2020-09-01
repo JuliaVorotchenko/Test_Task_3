@@ -46,7 +46,6 @@ final class CityDetailsViewController: UIViewController, MKMapViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.mapSetup()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -57,39 +56,18 @@ final class CityDetailsViewController: UIViewController, MKMapViewDelegate {
     // MARK: - Private Methods
     
     private func recieveWeatherModel() {
-        print(#function)
         self.networking.loadWeather(coordinates: model.coordinates) { [weak self] result in
             switch result {
             case .success(let model):
                 self?.rootView.fill(with: model)
+                self?.weatherModel = model
             case .failure(let error):
                 print(error.localizedDescription)
             }
         }
     }
     
-    private func mapSetup() {
-        let latitude = self.model.coordinates.latitude
-        let longitude = self.model.coordinates.longitude
-        let mapView = self.rootView.mapView
-        mapView?.delegate = self
-        mapView?.setCenter(CLLocationCoordinate2D(latitude: latitude, longitude: longitude), animated: true)
-        
-        let latDelta: CLLocationDegrees = 0.7
-        
-        let longDelta: CLLocationDegrees = 0.7
-        
-        let theSpan = MKCoordinateSpan(latitudeDelta: latDelta, longitudeDelta: longDelta)
-        let pointLocation = CLLocationCoordinate2DMake(latitude, longitude)
-        let region = MKCoordinateRegion(center: pointLocation, span: theSpan)
-        mapView?.setRegion(region, animated: true)
-        
-        let pinLocation : CLLocationCoordinate2D = CLLocationCoordinate2DMake(latitude, longitude)
-        let objectAnnotation = MKPointAnnotation()
-        objectAnnotation.coordinate = pinLocation
-        objectAnnotation.title = self.model.name
-        mapView?.addAnnotation(objectAnnotation)
-    }
+    
     // MARK: - IBActions
     
     @IBAction func onBack(_ sender: UIBarButtonItem) {
