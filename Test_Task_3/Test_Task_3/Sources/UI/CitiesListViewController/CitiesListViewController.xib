@@ -18,10 +18,14 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="qdB-VN-IeH">
+                <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Search for the city" translatesAutoresizingMaskIntoConstraints="NO" id="qdB-VN-IeH">
                     <rect key="frame" x="0.0" y="44" width="414" height="56"/>
                     <color key="barTintColor" red="0.89019607840000003" green="0.95686274510000002" blue="0.99607843139999996" alpha="1" colorSpace="calibratedRGB"/>
                     <textInputTraits key="textInputTraits"/>
+                    <scopeButtonTitles>
+                        <string>Title</string>
+                        <string>Title</string>
+                    </scopeButtonTitles>
                 </searchBar>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4tB-ll-P4Z">
                     <rect key="frame" x="0.0" y="100" width="414" height="762"/>

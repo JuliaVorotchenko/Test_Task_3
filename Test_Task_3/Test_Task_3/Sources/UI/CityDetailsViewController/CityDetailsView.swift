@@ -14,7 +14,6 @@ final class CityDetailsView: UIView, MKMapViewDelegate {
     @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var cityNameLabel: UILabel!
-    @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var currentTemperatureLabel: UILabel!
     @IBOutlet weak var minTemperatureLabel: UILabel!
     @IBOutlet weak var maxTemperatureLabel: UILabel!
@@ -28,7 +27,6 @@ final class CityDetailsView: UIView, MKMapViewDelegate {
         self.mapSetup(with: model)
         self.navigationBar.topItem?.title = "Weather in \(model.name)"
         self.cityNameLabel.text = model.name
-        self.dateLabel.text = self.setDate(date: model.date)
         self.currentTemperatureLabel.text = self.setTemperature(kelvins: model.main.temperature) + "°C"
         self.minTemperatureLabel.text = self.setTemperature(kelvins: model.main.minTemperature) + "C°"
         self.maxTemperatureLabel.text = self.setTemperature(kelvins: model.main.maxTemperature) + "C°"
@@ -53,15 +51,7 @@ final class CityDetailsView: UIView, MKMapViewDelegate {
         objectAnnotation.coordinate = pointLocation
         mapView?.addAnnotation(objectAnnotation)
     }
-    
-    private func setDate(date: Int) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .medium
-        dateFormatter.timeStyle = .none
-        let timeInterval = TimeInterval(integerLiteral: Int64(date))
-        return  dateFormatter.string(from: Date(timeIntervalSince1970: timeInterval))
-    }
-    
+
     private func setTemperature(kelvins: Double) -> String {
         let celcius = kelvins - 273
         return String(celcius.round(to: 0))
