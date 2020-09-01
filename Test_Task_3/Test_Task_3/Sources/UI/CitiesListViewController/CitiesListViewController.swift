@@ -22,6 +22,7 @@ final class CitiesListViewController: UIViewController, UITableViewDataSource, U
     let eventHandler: (CitiesListEvents) -> ()
     private let jsonParser: JSONParser
     private var cityModels: [CityViewModel] = []
+    private var cityModelsBase: [CityViewModel] = []
     
     // MARK: - Initialization
     
@@ -60,8 +61,14 @@ final class CitiesListViewController: UIViewController, UITableViewDataSource, U
         let result = self.jsonParser.parseJSON(file: "cityList")
         switch result {
         case .success(let models):
-            let path = models.count % 2 == 0 ? Path.evenUrl : .oddUrl
-            self.cityModels = models.map { return CityViewModel(name: $0.name, url: path, coordinates: $0.coordinates)}
+            let result: [CityViewModel] = models
+                .enumerated()
+                .compactMap { tuple in
+                    let path = tuple.offset.isMultiple(of: 2) ? Path.evenUrl : Path.oddUrl
+                    return CityViewModel(name: tuple.element.name, url: path, coordinates: tuple.element.coordinates)
+            }
+            self.cityModels = result
+            self.cityModelsBase = result
         case .failure(let error):
             self.eventHandler(.error(.unowned(error)))
         }
@@ -95,7 +102,7 @@ final class CitiesListViewController: UIViewController, UITableViewDataSource, U
         if !searchText.isEmpty {
             self.cityModels = filteredArr
         } else {
-            self.getCities()
+            self.cityModels = self.cityModelsBase
         }
         self.rootView.tableView.reloadData()
     }

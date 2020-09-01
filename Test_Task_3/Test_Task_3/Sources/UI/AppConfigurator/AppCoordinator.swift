@@ -79,7 +79,5 @@ final class AppErrorServiceeImpl: AppErrorService {
     func handleError(_ error: AppError) {
         self.rootViewController?.showErrorAlert("Error", error: error)
     }
-    
-    
 }
 
