@@ -21,8 +21,17 @@ final class CitiesListViewController: UIViewController, UITableViewDataSource, U
     
     let eventHandler: (CitiesListEvents) -> ()
     private let jsonParser: JSONParser
-    private var cityModels: [CityViewModel] = []
-    private var cityModelsNoFiltration: [CityViewModel] = []
+    private var cities: [CityViewModel] = []
+    private var filteredCities: [CityViewModel] = []
+    
+    private var isSearchBarEmpty: Bool  {
+        return rootView.citySearchBar.text?.isEmpty ?? true
+    }
+    
+    private var isFiltering: Bool {
+        return self.rootView.citySearchBar.isFirstResponder
+            && !isSearchBarEmpty
+    }
     
     // MARK: - Initialization
     
@@ -67,69 +76,61 @@ final class CitiesListViewController: UIViewController, UITableViewDataSource, U
                     let path = tuple.offset.isMultiple(of: 2) ? Path.evenUrl : Path.oddUrl
                     return CityViewModel(name: tuple.element.name, url: path, coordinates: tuple.element.coordinates)
             }
-            self.cityModels = result
-            self.cityModelsNoFiltration = result
+            self.cities = result
         case .failure:
             self.eventHandler(.error(.jsonError))
         }
     }
     
+    private func filterCitiesBySearchText(_ searchText: String) {
+        self.filteredCities = self.cities.filter { $0.name.lowercased().contains(searchText.lowercased())}
+        self.rootView.tableView.reloadData()
+    }
+    
     // MARK: - UITableViewDataSource Methods
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.cityModels.count
+        if isFiltering {
+            return filteredCities.count
+        }
+        return cities.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: CityTableViewCell = tableView.dequeueReusableCell(CityTableViewCell.self, for: indexPath)
-        cell.fill(with: self.cityModels[indexPath.row])
+        let city: CityViewModel
+        if isFiltering {
+            city = filteredCities[indexPath.row]
+        } else {
+            city = cities[indexPath.row]
+        }
+        cell.fill(with: city)
         return cell
     }
     
     // MARK: - UITableViewDelegate Methods
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let coordinates = self.cityModels[indexPath.row].coordinates
+        let coordinates: Coordinates
+        if isFiltering {
+            coordinates = filteredCities[indexPath.row].coordinates
+        } else {
+            coordinates = cities[indexPath.row].coordinates
+        }
         self.eventHandler(.cityDetails(coordinates))
     }
     
     // MARK: - UISearchBarDelegate Mehtods
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        guard let searchQuery = searchBar.text else { return }
-        let filteredArr = self.cityModels.filter { $0.name.lowercased().contains(searchQuery.lowercased()) }
-        
-        if !searchText.isEmpty {
-            self.cityModels = filteredArr
-        } else {
-            self.cityModels = self.cityModelsNoFiltration
-        }
+        self.filterCitiesBySearchText(searchText)
         self.rootView.tableView.reloadData()
     }
     
-    //    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-    //       guard let searchQuery = searchBar.text else { return }
-    //        let filteredArr = self.cityModels.filter { $0.name.lowercased().contains(searchQuery.lowercased()) }
-    //
-    //        if !searchQuery.isEmpty {
-    //            self.cityModels = filteredArr
-    //            self.rootView.tableView.reloadData()
-    //        }
-    //
-    //        searchBar.resignFirstResponder()
-    //    }
-    //
-    //
-    //
-    //    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-    //        guard let searchQuery = searchBar.text else { return }
-    //        let filteredArr = self.cityModels.filter { $0.name.lowercased().contains(searchQuery.lowercased()) }
-    //
-    //        if !searchQuery.isEmpty {
-    //            self.cityModels = filteredArr
-    //        }
-    //    }
-    //
-    //
-    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        guard let searchText = searchBar.text else { return }
+        self.filterCitiesBySearchText(searchText)
+        self.rootView.tableView.reloadData()
+        searchBar.resignFirstResponder()
+    }
 }
