@@ -53,17 +53,18 @@ final class CitiesListViewController: UIViewController, UITableViewDataSource, U
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setTableView()
+        self.setSubViews()
         self.getCities()
     }
     
     // MARK: - Private Methods
     
-    private func setTableView() {
+    private func setSubViews() {
         self.rootView.citySearchBar.delegate = self
         self.rootView?.tableView.delegate = self
         self.rootView?.tableView.dataSource = self
         self.rootView.tableView.register(CityTableViewCell.self)
+        self.rootView.tableView.keyboardDismissMode = .onDrag
     }
     
     private func getCities() {
