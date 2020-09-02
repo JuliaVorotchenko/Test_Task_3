@@ -29,9 +29,3 @@ final class CityTableViewCell: UITableViewCell {
     }
     
 }
-
-struct CityViewModel {
-    let name: String
-    let url: Path
-    let coordinates: Coordinates
-}

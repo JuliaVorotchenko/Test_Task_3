@@ -69,8 +69,8 @@ final class CitiesListViewController: UIViewController, UITableViewDataSource, U
             }
             self.cityModels = result
             self.cityModelsNoFiltration = result
-        case .failure(let error):
-            self.eventHandler(.error(.unowned(error)))
+        case .failure:
+            self.eventHandler(.error(.jsonError))
         }
     }
     

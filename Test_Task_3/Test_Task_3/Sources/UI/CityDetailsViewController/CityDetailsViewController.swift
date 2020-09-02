@@ -23,7 +23,7 @@ final class CityDetailsViewController: UIViewController, MKMapViewDelegate {
     let eventHandler: (CityDetailsEvents) -> ()
     let coordinaes: Coordinates
     let networking: APIInteractionService
-    var weatherModel: WeatherModel?
+    var weatherModel: CityDetailsViewModel?
     
     
     // MARK: - Initialization
@@ -60,8 +60,7 @@ final class CityDetailsViewController: UIViewController, MKMapViewDelegate {
         self.networking.loadWeather(coordinates: self.coordinaes) { [weak self] result in
             switch result {
             case .success(let model):
-                self?.rootView.fill(with: model)
-                self?.weatherModel = model
+                self?.rootView.fill(with: CityDetailsViewModel.create(weatherModel: model))
             case .failure(let error):
                 print(error.localizedDescription)
             }
@@ -73,6 +72,5 @@ final class CityDetailsViewController: UIViewController, MKMapViewDelegate {
     @IBAction func onBack(_ sender: UIBarButtonItem) {
         self.eventHandler(.back)
     }
-    
 }
 
