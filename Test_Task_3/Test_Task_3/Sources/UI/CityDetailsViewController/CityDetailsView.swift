@@ -26,11 +26,11 @@ final class CityDetailsView: UIView, MKMapViewDelegate {
         self.mapSetup(with: model.coordinates)
         self.navigationBar.topItem?.title = "Weather in \(model.cityName)"
         self.cityNameLabel.text = model.cityName
-        self.currentTemperatureLabel.text = self.setTemperature(kelvins: model.currentTemperature) + "° C"
-        self.minTemperatureLabel.text = self.setTemperature(kelvins: model.minTemperature) + "° C"
-        self.maxTemperatureLabel.text = self.setTemperature(kelvins: model.maxTemperature) + "° C"
+        self.currentTemperatureLabel.text = self.setTemperature(kelvins: model.currentTemperature)
+        self.minTemperatureLabel.text = self.setTemperature(kelvins: model.minTemperature)
+        self.maxTemperatureLabel.text = self.setTemperature(kelvins: model.maxTemperature)
         self.humidityLabel.text = String(describing: model.humidity)  + "%"
-        self.windLabel.text = String(describing: model.windSpeed) + "m/s"
+        self.windLabel.text = self.setWindSpeed(speed: model.windSpeed)
     }
     
     private func mapSetup(with model: Coordinates) {
@@ -53,6 +53,10 @@ final class CityDetailsView: UIView, MKMapViewDelegate {
 
     private func setTemperature(kelvins: Double) -> String {
         let celcius = kelvins - 273
-        return String(format: "%.0f", celcius)
+        return String(format: "%.0f", celcius) + "° C"
+    }
+    
+    private func setWindSpeed(speed: Double) -> String {
+        return String(format: "%.0f", speed) + " m/s"
     }
 }
