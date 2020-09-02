@@ -21,7 +21,7 @@ final class CityDetailsViewController: UIViewController, MKMapViewDelegate {
     // MARK: - Private Properties
     
     let eventHandler: (CityDetailsEvents) -> ()
-    let coordinaes: Coordinates
+    let coordinates: Coordinates
     let networking: APIInteractionService
     var weatherModel: CityDetailsViewModel?
     
@@ -30,7 +30,7 @@ final class CityDetailsViewController: UIViewController, MKMapViewDelegate {
     
     init(coordinates: Coordinates, eventHandler: @escaping (CityDetailsEvents) -> (), networking: APIInteractionService = ApiInteractionServiceImpl()) {
         self.eventHandler = eventHandler
-        self.coordinaes = coordinates
+        self.coordinates = coordinates
         self.networking = networking
         super.init(nibName: F.nibNamefor(Self.self), bundle: nil)
     }
@@ -57,12 +57,12 @@ final class CityDetailsViewController: UIViewController, MKMapViewDelegate {
     // MARK: - Private Methods
     
     private func recieveWeatherModel() {
-        self.networking.loadWeather(coordinates: self.coordinaes) { [weak self] result in
+        self.networking.loadWeather(coordinates: self.coordinates) { [weak self] result in
             switch result {
             case .success(let model):
                 self?.rootView.fill(with: CityDetailsViewModel.create(weatherModel: model))
             case .failure(let error):
-                print(error.localizedDescription)
+                self?.eventHandler(.error(.networkError(error)))
             }
         }
     }

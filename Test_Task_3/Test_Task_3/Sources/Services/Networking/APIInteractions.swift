@@ -74,15 +74,9 @@ class ApiInteractionServiceImpl: APIInteractionService {
     }
 }
 
-
-enum WeatherError: Error {
-    case unableTorecieveWeatherData
-}
-
 enum NetworkError: Error {
-    case parametersNil
+ 
     case encodingFailed
-    case missingURL
     case resultError
     case badRequest
     case outdated
@@ -92,21 +86,18 @@ enum NetworkError: Error {
     
     var stringDescription: String {
         switch self {
-        case .parametersNil:
-            return "Parameters were nil."
         case .encodingFailed:
             return "Parameters encoding failed."
-        case .missingURL:
-            return "URL is nil."
         case .resultError:
             return "Couldnt`t parse resultError"
         case .networkingResponse:
-            return "Couldnt "
-        case .other(let error): return error?.localizedDescription ?? "other error"
+            return "Couldnt retrieve data from server"
+        case .other(let error):
+            return error?.localizedDescription ?? "other error"
         case .badRequest:
-            return self.localizedDescription
+            return "Wrong URL"
         case .outdated:
-            return self.localizedDescription
+            return "Outdated server"
         }
     }
 }

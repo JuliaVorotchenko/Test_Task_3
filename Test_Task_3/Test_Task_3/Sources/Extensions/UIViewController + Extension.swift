@@ -12,11 +12,6 @@ import UIKit
 
 struct  TextConstants {
     static let close = "Close"
-    static let cancel = "Cancel"
-    static let serverError = "Server Error"
-    static let appError = "App error."
-    static let searchErrorTitle = "Search error"
-    static let searchErrorMessage = "No results found"
 }
 
 // MARK: - Protocol extension
@@ -42,19 +37,7 @@ extension UIViewController {
         self.present(alertController, animated: true, completion: nil)
     }
     
-    func showErrorAlert(_ title: String?, error: Error?) {
-        self.showAlert(title: title, message: error?.localizedDescription)
-    }
-    
-    func showAlertWithAction(title: String?,
-                             message: String?,
-                             actionTitle: String?,
-                             action: ((UIAlertAction) -> Void)?) {
-        let alertAction = UIAlertAction(title: actionTitle,
-                                        style: .default,
-                                        handler: action)
-        self.showAlert(title: title,
-                       message: message,
-                       actions: [alertAction])
+    func showAppError(_ title: String?, error: AppError) {
+        self.showAlert(title: title, message: error.stringDescription)
     }
 }

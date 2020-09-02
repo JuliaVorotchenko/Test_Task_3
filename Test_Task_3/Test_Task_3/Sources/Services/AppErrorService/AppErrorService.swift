@@ -11,7 +11,17 @@ import UIKit
 enum AppError: Error {
     case jsonError
     case unowned(Error)
-    case networkError(Error?)
+    case networkError(NetworkError)
+    
+    var stringDescription: String {
+        
+        switch self {
+        case .jsonError: return "Couldn retrieve data"
+        case .networkError(let error): return error.stringDescription
+        case .unowned(let error): return error.localizedDescription
+            
+        }
+    }
 }
 
 protocol AppErrorService {
@@ -27,6 +37,6 @@ final class AppErrorServiceeImpl: AppErrorService {
     }
     
     func handleError(_ error: AppError) {
-        self.rootViewController?.showErrorAlert("Error", error: error)
+        self.rootViewController?.showAppError("Error", error: error)
     }
 }
