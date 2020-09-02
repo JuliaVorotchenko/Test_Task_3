@@ -19,7 +19,7 @@ final class AppConfigurator {
     private func configure(window: UIWindow) {
         let navigationController = UINavigationController()
         window.rootViewController = navigationController
-        let appErrorService = AppErrorServiceeImpl(rootViewController: window.rootViewController)
+        let appErrorService = AppErrorServiceImpl(rootViewController: window.rootViewController)
         navigationController.navigationBar.isHidden = true
         self.coordinator = AppCoordinator(navigationController: navigationController, appErrorService: appErrorService)
         self.coordinator?.start()

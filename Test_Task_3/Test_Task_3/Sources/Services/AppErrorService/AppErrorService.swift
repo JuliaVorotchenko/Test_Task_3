@@ -9,6 +9,7 @@
 import UIKit
 
 enum AppError: Error {
+    
     case jsonError
     case unowned(Error)
     case networkError(NetworkError)
@@ -28,7 +29,7 @@ protocol AppErrorService {
     func handleError(_ error: AppError)
 }
 
-final class AppErrorServiceeImpl: AppErrorService {
+final class AppErrorServiceImpl: AppErrorService {
     
     private let rootViewController: UIViewController?
     

@@ -27,5 +27,4 @@ final class CityTableViewCell: UITableViewCell {
         self.cityNameLabel.text = model.name
         self.cityImage.loadImage(mainPath: model.url)
     }
-    
 }

@@ -74,30 +74,3 @@ class ApiInteractionServiceImpl: APIInteractionService {
     }
 }
 
-enum NetworkError: Error {
- 
-    case encodingFailed
-    case resultError
-    case badRequest
-    case outdated
-    case networkingResponse
-    
-    case other(URLError: Error?)
-    
-    var stringDescription: String {
-        switch self {
-        case .encodingFailed:
-            return "Parameters encoding failed."
-        case .resultError:
-            return "Couldnt`t parse resultError"
-        case .networkingResponse:
-            return "Couldnt retrieve data from server"
-        case .other(let error):
-            return error?.localizedDescription ?? "other error"
-        case .badRequest:
-            return "Wrong URL"
-        case .outdated:
-            return "Outdated server"
-        }
-    }
-}

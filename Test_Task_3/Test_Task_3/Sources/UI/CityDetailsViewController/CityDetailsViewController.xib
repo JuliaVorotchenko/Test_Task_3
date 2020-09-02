@@ -185,6 +185,7 @@
             <connections>
                 <outlet property="cityNameLabel" destination="YKZ-7M-Roq" id="Dwp-Xe-iIG"/>
                 <outlet property="currentTemperatureLabel" destination="h6C-nn-1V5" id="K5c-yM-2T6"/>
+                <outlet property="detailsContainer" destination="pC4-aJ-lM1" id="HyG-Zi-3qk"/>
                 <outlet property="humidityLabel" destination="4A0-vt-vVF" id="FLj-q4-UcF"/>
                 <outlet property="mapView" destination="jau-8k-u26" id="Oh6-hR-CRn"/>
                 <outlet property="maxTemperatureLabel" destination="3ob-gh-eki" id="bax-5P-0uz"/>

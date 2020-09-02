@@ -19,6 +19,7 @@ final class CityDetailsView: UIView, MKMapViewDelegate {
     @IBOutlet weak var maxTemperatureLabel: UILabel!
     @IBOutlet weak var humidityLabel: UILabel!
     @IBOutlet weak var windLabel: UILabel!
+    @IBOutlet weak var detailsContainer: UIView!
     
     // MARK: - Public methods
     

@@ -25,12 +25,12 @@ final class CitiesListViewController: UIViewController, UITableViewDataSource, U
     private var filteredCities: [CityViewModel] = []
     
     private var isSearchBarEmpty: Bool  {
-        return rootView.citySearchBar.text?.isEmpty ?? true
+        return self.rootView.citySearchBar.text?.isEmpty ?? true
     }
     
     private var isFiltering: Bool {
         return self.rootView.citySearchBar.isFirstResponder
-            && !isSearchBarEmpty
+            && !self.isSearchBarEmpty
     }
     
     // MARK: - Initialization
@@ -46,7 +46,7 @@ final class CitiesListViewController: UIViewController, UITableViewDataSource, U
     }
     
     deinit {
-        print(Self.self)
+        F.Log(self)
     }
     
     // MARK: - VC Lifecycle

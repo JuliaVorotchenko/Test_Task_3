@@ -40,7 +40,7 @@ final class CityDetailsViewController: UIViewController, MKMapViewDelegate {
     }
     
     deinit {
-        print(Self.self)
+        F.Log(self)
     }
     
     // MARK: - VC Lifecycle
