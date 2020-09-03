@@ -20,5 +20,4 @@
  * Mediates between ViewControllers and Networking;
  * Generates events for coordinator about user's action;
  * Retrieves data from model;
- * Formates data for ViewController;
  
