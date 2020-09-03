@@ -129,7 +129,7 @@
 			children = (
 				CDEAE26D24F7F05E00B29E31 /* CitiesListViewController */,
 				CDEAE26E24F7F08700B29E31 /* CityDetailsViewController */,
-				CDEAE26C24F7F05000B29E31 /* AppConfigurator */,
+				CDEAE26C24F7F05000B29E31 /* AppCoordinator */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -189,13 +189,13 @@
 			path = Sources;
 			sourceTree = "<group>";
 		};
-		CDEAE26C24F7F05000B29E31 /* AppConfigurator */ = {
+		CDEAE26C24F7F05000B29E31 /* AppCoordinator */ = {
 			isa = PBXGroup;
 			children = (
 				CDEAE27D24F80CBB00B29E31 /* AppConfigurator.swift */,
 				CDEAE27F24F80CCD00B29E31 /* AppCoordinator.swift */,
 			);
-			path = AppConfigurator;
+			path = AppCoordinator;
 			sourceTree = "<group>";
 		};
 		CDEAE26D24F7F05E00B29E31 /* CitiesListViewController */ = {
