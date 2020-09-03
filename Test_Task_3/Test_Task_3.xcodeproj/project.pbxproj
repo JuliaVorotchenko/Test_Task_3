@@ -3,13 +3,19 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4699B8651C930F8D4BF34CF8 /* Pods_Test_Task_3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86AE3FFD745AFAEB488A6F8B /* Pods_Test_Task_3.framework */; };
+		CD6C962124FEA3D8004634F5 /* UITableView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6C962024FEA3D8004634F5 /* UITableView + Extension.swift */; };
+		CD6C962324FEA478004634F5 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6C962224FEA478004634F5 /* Functions.swift */; };
+		CD6C962524FEB314004634F5 /* UIViewController + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6C962424FEB314004634F5 /* UIViewController + Extension.swift */; };
+		CD6C962824FED125004634F5 /* AppErrorService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6C962724FED125004634F5 /* AppErrorService.swift */; };
+		CD6C962A24FF8457004634F5 /* CityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6C962924FF8457004634F5 /* CityViewModel.swift */; };
+		CD6C962C24FF848A004634F5 /* CityDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6C962B24FF848A004634F5 /* CityDetailsViewModel.swift */; };
+		CD6C962E24FFCB33004634F5 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6C962D24FFCB33004634F5 /* NetworkError.swift */; };
 		CDBE69D224F9689700203D51 /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBE69D124F9689700203D51 /* WeatherModel.swift */; };
-		CDBE69D424FA355900203D51 /* Double+Exteension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBE69D324FA355900203D51 /* Double+Exteension.swift */; };
+		CDBE69D424FA355900203D51 /* Double+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBE69D324FA355900203D51 /* Double+Extension.swift */; };
 		CDEAE25324F7E2B600B29E31 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEAE25224F7E2B600B29E31 /* AppDelegate.swift */; };
 		CDEAE25524F7E2B600B29E31 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEAE25424F7E2B600B29E31 /* SceneDelegate.swift */; };
 		CDEAE25724F7E2B600B29E31 /* CityDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEAE25624F7E2B600B29E31 /* CityDetailsViewController.swift */; };
@@ -35,10 +41,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		480F1AA0E36A8FB0F8338616 /* Pods-Test_Task_3.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Test_Task_3.debug.xcconfig"; path = "Target Support Files/Pods-Test_Task_3/Pods-Test_Task_3.debug.xcconfig"; sourceTree = "<group>"; };
-		86AE3FFD745AFAEB488A6F8B /* Pods_Test_Task_3.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Test_Task_3.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CD6C962024FEA3D8004634F5 /* UITableView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView + Extension.swift"; sourceTree = "<group>"; };
+		CD6C962224FEA478004634F5 /* Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
+		CD6C962424FEB314004634F5 /* UIViewController + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Extension.swift"; sourceTree = "<group>"; };
+		CD6C962724FED125004634F5 /* AppErrorService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppErrorService.swift; sourceTree = "<group>"; };
+		CD6C962924FF8457004634F5 /* CityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityViewModel.swift; sourceTree = "<group>"; };
+		CD6C962B24FF848A004634F5 /* CityDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityDetailsViewModel.swift; sourceTree = "<group>"; };
+		CD6C962D24FFCB33004634F5 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		CDBE69D124F9689700203D51 /* WeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherModel.swift; sourceTree = "<group>"; };
-		CDBE69D324FA355900203D51 /* Double+Exteension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Exteension.swift"; sourceTree = "<group>"; };
+		CDBE69D324FA355900203D51 /* Double+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extension.swift"; sourceTree = "<group>"; };
 		CDEAE24F24F7E2B600B29E31 /* Test_Task_3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Test_Task_3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDEAE25224F7E2B600B29E31 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CDEAE25424F7E2B600B29E31 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -63,7 +74,6 @@
 		CDEAE29224F8FC1B00B29E31 /* ActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
 		CDEAE29424F9094500B29E31 /* cityList.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cityList.json; sourceTree = "<group>"; };
 		CDEAE29624F90D6600B29E31 /* APIInteractions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIInteractions.swift; sourceTree = "<group>"; };
-		E1740B217FFFD7A090B85E0E /* Pods-Test_Task_3.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Test_Task_3.release.xcconfig"; path = "Target Support Files/Pods-Test_Task_3/Pods-Test_Task_3.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,20 +81,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4699B8651C930F8D4BF34CF8 /* Pods_Test_Task_3.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		C999E735CB814D80457DE37D /* Pods */ = {
+		CD6C962624FED10A004634F5 /* AppErrorService */ = {
 			isa = PBXGroup;
 			children = (
-				480F1AA0E36A8FB0F8338616 /* Pods-Test_Task_3.debug.xcconfig */,
-				E1740B217FFFD7A090B85E0E /* Pods-Test_Task_3.release.xcconfig */,
+				CD6C962724FED125004634F5 /* AppErrorService.swift */,
 			);
-			path = Pods;
+			path = AppErrorService;
 			sourceTree = "<group>";
 		};
 		CDEAE24624F7E2B600B29E31 = {
@@ -92,8 +100,6 @@
 			children = (
 				CDEAE25124F7E2B600B29E31 /* Test_Task_3 */,
 				CDEAE25024F7E2B600B29E31 /* Products */,
-				C999E735CB814D80457DE37D /* Pods */,
-				D4A3116E5E2A74C510AA042C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -123,7 +129,7 @@
 			children = (
 				CDEAE26D24F7F05E00B29E31 /* CitiesListViewController */,
 				CDEAE26E24F7F08700B29E31 /* CityDetailsViewController */,
-				CDEAE26C24F7F05000B29E31 /* AppConfigurator */,
+				CDEAE26C24F7F05000B29E31 /* AppCoordinator */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -134,6 +140,8 @@
 				CDEAE29424F9094500B29E31 /* cityList.json */,
 				CDEAE28524F8380800B29E31 /* CityModel.swift */,
 				CDBE69D124F9689700203D51 /* WeatherModel.swift */,
+				CD6C962924FF8457004634F5 /* CityViewModel.swift */,
+				CD6C962B24FF848A004634F5 /* CityDetailsViewModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -141,6 +149,7 @@
 		CDEAE26824F7ED0500B29E31 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				CD6C962624FED10A004634F5 /* AppErrorService */,
 				CDEAE28D24F8FB1300B29E31 /* ImageLoadingService */,
 				CDEAE28924F8F78400B29E31 /* Networking */,
 				CDEAE28224F837B000B29E31 /* JSONParser */,
@@ -151,7 +160,10 @@
 		CDEAE26924F7ED0E00B29E31 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				CDBE69D324FA355900203D51 /* Double+Exteension.swift */,
+				CDBE69D324FA355900203D51 /* Double+Extension.swift */,
+				CD6C962024FEA3D8004634F5 /* UITableView + Extension.swift */,
+				CD6C962224FEA478004634F5 /* Functions.swift */,
+				CD6C962424FEB314004634F5 /* UIViewController + Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -168,7 +180,6 @@
 		CDEAE26B24F7ED6A00B29E31 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				CDEAE28124F80CFD00B29E31 /* Protocols */,
 				CDEAE26624F7ECEE00B29E31 /* UI */,
 				CDEAE26724F7ECFD00B29E31 /* Models */,
 				CDEAE26824F7ED0500B29E31 /* Services */,
@@ -178,13 +189,13 @@
 			path = Sources;
 			sourceTree = "<group>";
 		};
-		CDEAE26C24F7F05000B29E31 /* AppConfigurator */ = {
+		CDEAE26C24F7F05000B29E31 /* AppCoordinator */ = {
 			isa = PBXGroup;
 			children = (
 				CDEAE27D24F80CBB00B29E31 /* AppConfigurator.swift */,
 				CDEAE27F24F80CCD00B29E31 /* AppCoordinator.swift */,
 			);
-			path = AppConfigurator;
+			path = AppCoordinator;
 			sourceTree = "<group>";
 		};
 		CDEAE26D24F7F05E00B29E31 /* CitiesListViewController */ = {
@@ -209,13 +220,6 @@
 			path = CityDetailsViewController;
 			sourceTree = "<group>";
 		};
-		CDEAE28124F80CFD00B29E31 /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Protocols;
-			sourceTree = "<group>";
-		};
 		CDEAE28224F837B000B29E31 /* JSONParser */ = {
 			isa = PBXGroup;
 			children = (
@@ -229,6 +233,7 @@
 			children = (
 				CDEAE28B24F8F7AC00B29E31 /* NetworkService.swift */,
 				CDEAE29624F90D6600B29E31 /* APIInteractions.swift */,
+				CD6C962D24FFCB33004634F5 /* NetworkError.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -241,14 +246,6 @@
 			path = ImageLoadingService;
 			sourceTree = "<group>";
 		};
-		D4A3116E5E2A74C510AA042C /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				86AE3FFD745AFAEB488A6F8B /* Pods_Test_Task_3.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -256,11 +253,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CDEAE26324F7E2B700B29E31 /* Build configuration list for PBXNativeTarget "Test_Task_3" */;
 			buildPhases = (
-				BDD5D4E8B3F8199AAA2B82A8 /* [CP] Check Pods Manifest.lock */,
 				CDEAE24B24F7E2B600B29E31 /* Sources */,
 				CDEAE24C24F7E2B600B29E31 /* Frameworks */,
 				CDEAE24D24F7E2B600B29E31 /* Resources */,
-				B2E7A22394334967D5752ED6 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -320,67 +315,32 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		B2E7A22394334967D5752ED6 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Test_Task_3/Pods-Test_Task_3-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Test_Task_3/Pods-Test_Task_3-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Test_Task_3/Pods-Test_Task_3-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		BDD5D4E8B3F8199AAA2B82A8 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Test_Task_3-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		CDEAE24B24F7E2B600B29E31 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CDBE69D424FA355900203D51 /* Double+Exteension.swift in Sources */,
+				CD6C962E24FFCB33004634F5 /* NetworkError.swift in Sources */,
+				CD6C962C24FF848A004634F5 /* CityDetailsViewModel.swift in Sources */,
+				CDBE69D424FA355900203D51 /* Double+Extension.swift in Sources */,
+				CD6C962A24FF8457004634F5 /* CityViewModel.swift in Sources */,
 				CDEAE25724F7E2B600B29E31 /* CityDetailsViewController.swift in Sources */,
 				CDEAE27B24F809B900B29E31 /* CityTableViewCell.swift in Sources */,
+				CD6C962324FEA478004634F5 /* Functions.swift in Sources */,
 				CDEAE27624F8095C00B29E31 /* CitiesListView.swift in Sources */,
 				CDEAE28624F8380800B29E31 /* CityModel.swift in Sources */,
+				CD6C962824FED125004634F5 /* AppErrorService.swift in Sources */,
 				CDEAE25324F7E2B600B29E31 /* AppDelegate.swift in Sources */,
 				CDEAE29124F8FBF600B29E31 /* LoadingImageView.swift in Sources */,
 				CDEAE27E24F80CBB00B29E31 /* AppConfigurator.swift in Sources */,
 				CDEAE28424F837C900B29E31 /* JSONParser.swift in Sources */,
+				CD6C962524FEB314004634F5 /* UIViewController + Extension.swift in Sources */,
 				CDEAE29324F8FC1B00B29E31 /* ActivityView.swift in Sources */,
 				CDEAE27024F7F9F700B29E31 /* CityDetailsView.swift in Sources */,
 				CDEAE28F24F8FB2B00B29E31 /* ImageLoadingService.swift in Sources */,
 				CDEAE28024F80CCD00B29E31 /* AppCoordinator.swift in Sources */,
 				CDEAE25524F7E2B600B29E31 /* SceneDelegate.swift in Sources */,
+				CD6C962124FEA3D8004634F5 /* UITableView + Extension.swift in Sources */,
 				CDEAE29724F90D6600B29E31 /* APIInteractions.swift in Sources */,
 				CDBE69D224F9689700203D51 /* WeatherModel.swift in Sources */,
 				CDEAE28C24F8F7AC00B29E31 /* NetworkService.swift in Sources */,
@@ -518,7 +478,6 @@
 		};
 		CDEAE26424F7E2B700B29E31 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 480F1AA0E36A8FB0F8338616 /* Pods-Test_Task_3.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -537,7 +496,6 @@
 		};
 		CDEAE26524F7E2B700B29E31 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E1740B217FFFD7A090B85E0E /* Pods-Test_Task_3.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

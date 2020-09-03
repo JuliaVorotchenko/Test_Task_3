@@ -22,7 +22,7 @@ final class JSONParserImpl: JSONParser {
                 let jsonData = try decoder.decode([CityModel].self, from: data)
                 return .success(jsonData)
             } catch {
-                print("error:\(error)")
+                return .failure(.unowned(error))
             }
         }
         return .failure(.jsonError)

@@ -19,24 +19,24 @@ final class CityDetailsView: UIView, MKMapViewDelegate {
     @IBOutlet weak var maxTemperatureLabel: UILabel!
     @IBOutlet weak var humidityLabel: UILabel!
     @IBOutlet weak var windLabel: UILabel!
-    
+    @IBOutlet weak var detailsContainer: UIView!
     
     // MARK: - Public methods
     
-    func fill(with model: WeatherModel) {
-        self.mapSetup(with: model)
-        self.navigationBar.topItem?.title = "Weather in \(model.name)"
-        self.cityNameLabel.text = model.name
-        self.currentTemperatureLabel.text = self.setTemperature(kelvins: model.main.temperature) + "°C"
-        self.minTemperatureLabel.text = self.setTemperature(kelvins: model.main.minTemperature) + "C°"
-        self.maxTemperatureLabel.text = self.setTemperature(kelvins: model.main.maxTemperature) + "C°"
-        self.humidityLabel.text = String(describing: model.main.humidity)  + "%"
-        self.windLabel.text = String(describing: model.wind.speed) + "m/s"
+    func fill(with model: CityDetailsViewModel) {
+        self.mapSetup(with: model.coordinates)
+        self.navigationBar.topItem?.title = "Weather in \(model.cityName)"
+        self.cityNameLabel.text = model.cityName
+        self.currentTemperatureLabel.text = self.setTemperature(kelvins: model.currentTemperature)
+        self.minTemperatureLabel.text = self.setTemperature(kelvins: model.minTemperature)
+        self.maxTemperatureLabel.text = self.setTemperature(kelvins: model.maxTemperature)
+        self.humidityLabel.text = String(describing: model.humidity)  + "%"
+        self.windLabel.text = self.setWindSpeed(speed: model.windSpeed)
     }
     
-    private func mapSetup(with model: WeatherModel) {
-        let latitude = model.coordinates.latitude
-        let longitude = model.coordinates.longitude
+    private func mapSetup(with model: Coordinates) {
+        let latitude = model.latitude
+        let longitude = model.longitude
         let mapView = self.mapView
         mapView?.delegate = self
         mapView?.setCenter(CLLocationCoordinate2D(latitude: latitude, longitude: longitude), animated: true)
@@ -54,6 +54,10 @@ final class CityDetailsView: UIView, MKMapViewDelegate {
 
     private func setTemperature(kelvins: Double) -> String {
         let celcius = kelvins - 273
-        return String(celcius.round(to: 0))
+        return String(format: "%.0f", celcius) + "° C"
+    }
+    
+    private func setWindSpeed(speed: Double) -> String {
+        return String(format: "%.0f", speed) + " m/s"
     }
 }

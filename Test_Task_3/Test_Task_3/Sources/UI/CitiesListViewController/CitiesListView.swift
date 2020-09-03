@@ -9,7 +9,7 @@
 import UIKit
 
 final class CitiesListView: UIView {
-
+   
     @IBOutlet weak var citySearchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
 }

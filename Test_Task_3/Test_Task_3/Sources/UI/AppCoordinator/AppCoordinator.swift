@@ -17,13 +17,13 @@ final class AppCoordinator: Coordinator {
     // MARK: - Properties
     
     let navigationController: UINavigationController
-    var citiesListViewController: CitiesListViewController?
-    var cityDetailsViewController: CityDetailsViewController?
+    private let appErrorService: AppErrorService
     
     // MARK: - Initialization
     
-    init(navigationController: UINavigationController) {
+    init(navigationController: UINavigationController, appErrorService: AppErrorService) {
         self.navigationController = navigationController
+        self.appErrorService = appErrorService
     }
     
     // MARK: - Public Methods
@@ -35,20 +35,21 @@ final class AppCoordinator: Coordinator {
     // MARK: - Private Methods
     
     private func createCitiesListViewController() {
-        let controller = CitiesListViewController(eventHandler: self.citiesListEvent)
-        self.navigationController.viewControllers = [controller]
+        let controller = CitiesListViewController(eventHandler: { [weak self] in self?.citiesListEvent($0) })
+        self.navigationController.setViewControllers([controller], animated: true)
     }
     
     private func citiesListEvent(_ event: CitiesListEvents) {
         switch event {
-        case .cityDetails(let model):
-            self.createCityDetailsViewController(model: model)
-            self.citiesListViewController = nil
+        case .cityDetails(let coordinates):
+            self.createCityDetailsViewController(coordinates: coordinates)
+        case .error(let error):
+            self.appErrorService.handleError(error)
         }
     }
     
-    private func createCityDetailsViewController(model: CityModel) {
-        let controller = CityDetailsViewController(model: model, eventHandler: self.cityDetailsEvent)
+    private func createCityDetailsViewController(coordinates: Coordinates) {
+        let controller = CityDetailsViewController(coordinates: coordinates, eventHandler: { [weak self] in self?.cityDetailsEvent($0) })
         self.navigationController.pushViewController(controller, animated: true)
     }
     
@@ -56,6 +57,10 @@ final class AppCoordinator: Coordinator {
         switch event {
         case .back:
             self.navigationController.popViewController(animated: true)
+        case .error(let error):
+            self.appErrorService.handleError(error)
         }
     }
 }
+
+

@@ -11,6 +11,7 @@ import MapKit
 
 enum CityDetailsEvents {
     case back
+    case error(AppError)
 }
 
 final class CityDetailsViewController: UIViewController, MKMapViewDelegate {
@@ -19,19 +20,19 @@ final class CityDetailsViewController: UIViewController, MKMapViewDelegate {
     
     // MARK: - Private Properties
     
-    let eventHandler: ((CityDetailsEvents) -> ())?
-    let model: CityModel
+    let eventHandler: (CityDetailsEvents) -> ()
+    let coordinates: Coordinates
     let networking: APIInteractionService
-    var weatherModel: WeatherModel?
+    var weatherModel: CityDetailsViewModel?
     
     
     // MARK: - Initialization
     
-    init(model: CityModel, eventHandler: ((CityDetailsEvents) -> ())?, networking: APIInteractionService = ApiInteractionServiceImpl()) {
+    init(coordinates: Coordinates, eventHandler: @escaping (CityDetailsEvents) -> (), networking: APIInteractionService = ApiInteractionServiceImpl()) {
         self.eventHandler = eventHandler
-        self.model = model
+        self.coordinates = coordinates
         self.networking = networking
-        super.init(nibName: String(describing: type(of: self)), bundle: nil)
+        super.init(nibName: F.nibNamefor(Self.self), bundle: nil)
     }
     
     required init?(coder: NSCoder) {
@@ -39,7 +40,7 @@ final class CityDetailsViewController: UIViewController, MKMapViewDelegate {
     }
     
     deinit {
-        print(Self.self)
+        F.Log(self)
     }
     
     // MARK: - VC Lifecycle
@@ -56,23 +57,20 @@ final class CityDetailsViewController: UIViewController, MKMapViewDelegate {
     // MARK: - Private Methods
     
     private func recieveWeatherModel() {
-        self.networking.loadWeather(coordinates: model.coordinates) { [weak self] result in
+        self.networking.loadWeather(coordinates: self.coordinates) { [weak self] result in
             switch result {
             case .success(let model):
-                self?.rootView.fill(with: model)
-                self?.weatherModel = model
+                self?.rootView.fill(with: CityDetailsViewModel.create(weatherModel: model))
             case .failure(let error):
-                print(error.localizedDescription)
+                self?.eventHandler(.error(.networkError(error)))
             }
         }
     }
     
-    
     // MARK: - IBActions
     
     @IBAction func onBack(_ sender: UIBarButtonItem) {
-        self.eventHandler?(.back)
+        self.eventHandler(.back)
     }
-    
 }
 

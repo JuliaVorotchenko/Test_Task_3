@@ -13,7 +13,7 @@ import UIKit
 protocol ImageLoadingService {
     
     func loadImage(mainPath: Path,
-                   completion: ((Result<UIImage, ImageError>) -> Void)?)
+                   completion: @escaping (Result<UIImage, ImageError>) -> Void)
     func cancelLoading()
 }
 
@@ -46,12 +46,12 @@ class ImageLoadingServiceImpl: ImageLoadingService {
     
     // MARK: - Public methods
     
-    func loadImage(mainPath: Path = .evenUrl,
-                   completion: ((Result<UIImage, ImageError>) -> Void)?) {
+    func loadImage(mainPath: Path,
+                   completion: @escaping (Result<UIImage, ImageError>) -> Void) {
         guard let url = URL(string: mainPath.rawValue) else { fatalError("Unable create url") }
         
         if let cachedImage = self.cache.object(forKey: url as NSURL) {
-            completion?(.success(cachedImage))
+            completion(.success(cachedImage))
         } else {
             self.dataTask = self.networkService.perform(request: URLRequest(url: url)) { [weak self] result in
                 guard let `self` = self else { return }
@@ -61,12 +61,12 @@ class ImageLoadingServiceImpl: ImageLoadingService {
                         switch self.createImage(from: data) {
                         case .success(let image):
                             self.cache.setObject(image, forKey: url as NSURL)
-                            completion?(.success(image))
+                            completion(.success(image))
                         case .failure(let error):
-                            completion?(.failure(error))
+                            completion(.failure(error))
                         }
                     case .failure:
-                        completion?(.failure(.unableToCreateImage))
+                        completion(.failure(.unableToCreateImage))
                     }
                 }
             }

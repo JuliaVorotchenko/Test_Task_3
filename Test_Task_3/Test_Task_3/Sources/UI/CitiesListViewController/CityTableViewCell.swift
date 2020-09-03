@@ -9,34 +9,22 @@
 import UIKit
 
 final class CityTableViewCell: UITableViewCell {
- 
+    
     // MARK: - IBOutlets
-
+    
     @IBOutlet weak var cityImage: LoadingImageView!
     @IBOutlet weak var cityNameLabel: UILabel!
-   
-    // MARK: - Initialization
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        self.cityNameLabel.text = ""
+        self.cityImage.cancelLoading()
     }
     
     // MARK: - Public Methods
     
-    func fill(with model: CityModel, index: Int) {
+    func fill(with model: CityViewModel) {
         self.cityNameLabel.text = model.name
-        if index % 2 == 0 {
-           self.cityImage.loadImage(mainPath: Path.evenUrl)
-        } else {
-            self.cityImage.loadImage(mainPath: Path.oddUrl)
-        }
-        
+        self.cityImage.loadImage(mainPath: model.url)
     }
-    
 }
