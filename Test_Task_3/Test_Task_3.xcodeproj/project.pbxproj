@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -87,13 +87,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		C999E735CB814D80457DE37D /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
 		CD6C962624FED10A004634F5 /* AppErrorService */ = {
 			isa = PBXGroup;
 			children = (
@@ -107,7 +100,6 @@
 			children = (
 				CDEAE25124F7E2B600B29E31 /* Test_Task_3 */,
 				CDEAE25024F7E2B600B29E31 /* Products */,
-				C999E735CB814D80457DE37D /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
